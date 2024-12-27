@@ -1,9 +1,271 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #eaeaea;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            padding: 30px;
+            width: 1000px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .bl_column__containder{
+        	display: flex;
+        }
+
+        .bl_column__item {
+			flex: 1;
+		}
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #b0b0b0;
+        }
+
+        .input-group label.el__title{
+        	font-size: 16px;
+		    color: #2887e9;
+		    font-weight: bold;
+        }
+
+        .input-group input,
+        .input-group span {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #333333;
+            border: 1px solid #444444;
+            border-radius: 6px;
+            color: #eaeaea;
+        }
+
+        .input-group input:focus,
+        .input-group span:focus {
+            outline: none;
+            border-color: #7c4dff;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .checkbox-group label {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            color: #b0b0b0;
+        }
+
+        .checkbox-group input {
+            margin-right: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: #7c4dff;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #7c4dff;
+            padding: 10px;
+            background-color: #2a2a2a;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked + label {
+            color: #7c4dff;
+        }
+
+        .input-group input:disabled {
+            background-color: #222222;
+            border-color: #444444;
+            color: #777777;
+        }
+        h3{
+        	color: #2887e9;
+        }
+        .resource-item{
+        	display: flex;
+        }
+        .el_other_material__name, .el_other_material__val{
+        	width: 200px;
+        	color: #7c4dff;
+        	font-size: 18px;
+        }
+        .el_other_material__val{
+        	font-weight: bold
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, GitHub Pages!</h1>
+    <div class="container">
+        <h2>Калькулятор</h2>
+
+        <div class = "bl_column__containder">
+        	<div class = "bl_column__item">
+		        <div class="input-group">
+		            <label for="lvl" class = "el__title">Уровень динозавра/яйца:</label>
+		            <input type="number" id="lvl" value="0">
+		        </div>
+
+		        <div class="input-group">
+		            <label class = "el__title">Характеристики динозавра:</label>
+		            <div class="checkbox-group">
+		                <label><input type="checkbox" id="b4">Имеющего диких предков</label>
+		                <label><input type="checkbox" id="b5">Имеющего не дикую родословную</label>
+		                <label><input type="checkbox" id="b6">Одна из хар-к 65 или выше</label>
+		                <label><input type="checkbox" id="b7">Одна из хар-к 100 или выше</label>
+		                <label><input type="checkbox" id="b8">Одна из хар-к 150 или выше</label>
+		                <label><input type="checkbox" id="b9">Одна из хар-к 200 или выше</label>
+		                <label><input type="checkbox" id="b10">Одна из хар-к 250 или выше</label>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class = "bl_column__item">
+		        <div class="input-group">
+		            <label for="cluster" class = "el__title">Множитель кластера:</label>
+		            <input type="number" id="cluster" value="5" disabled>
+		        </div>
+
+		        <div class="input-group">
+		            <label class = "el__title">Колличество характеристик 65+</label>
+		            <div class="checkbox-group">
+		                <label><input type="checkbox" id="e4">2 характеристики +70% к цене</label>
+		                <label><input type="checkbox" id="e5">3 характеристики +80% к цене</label>
+		                <label><input type="checkbox" id="e6">4 характеристики +90% к цене</label>
+		                <label><input type="checkbox" id="e7">5 характеристики +95% к цене</label>
+		                <label><input type="checkbox" id="e8">6 характеристик и более +100% к цене</label>
+		            </div>
+		        </div>
+		        <div class="input-group">
+		            <label><input type="checkbox" id="e10">Гиганотозавр, Кархородонтозавр, Мек</label>
+		        </div>
+		    </div>
+	    </div>
+
+        <div id="result">Итоговая цена в Элементе: 0</div>
+        <div id="resources">
+            <h3>Итоговое значение в других ресурсах:</h3>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const lvl = parseInt(document.getElementById('lvl').value);
+            const cluster = parseInt(document.getElementById('cluster').value);
+            const checkboxesB = [document.getElementById('b4'), document.getElementById('b5'), document.getElementById('b6'), 
+                                document.getElementById('b7'), document.getElementById('b8'), document.getElementById('b9'), 
+                                document.getElementById('b10')];
+            const checkboxesE = [document.getElementById('e4'), document.getElementById('e5'), document.getElementById('e6'), 
+                                document.getElementById('e7'), document.getElementById('e8')];
+            const checkboxE10 = document.getElementById('e10');
+
+            let result = 0;
+            [3, 4, 6, 10, 15, 20, 30].forEach((multiplier, index) => {
+                if (checkboxesB[index].checked) {
+                    result += lvl * multiplier * cluster;
+                }
+            });
+
+            checkboxesE.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    const multiplier = [0.7, 0.8, 0.9, 0.95, 1][index];
+                    [6, 10, 15, 20, 30].forEach((multiplierB, indexB) => {
+                        if (checkboxesB[indexB + 2].checked) {
+                            result += lvl * multiplierB * cluster * multiplier;
+                        }
+                    });
+                }
+            });
+
+            if (checkboxE10.checked) {
+                [3, 4, 6, 10, 15, 20, 30].forEach((multiplier, index) => {
+                    if (checkboxesB[index].checked) {
+                        result += lvl * multiplier * cluster;
+                    }
+                });
+
+                checkboxesE.forEach((checkbox, index) => {
+                    if (checkbox.checked) {
+                        const multiplier = [0.7, 0.8, 0.9, 0.95, 1][index];
+                        [6, 10, 15, 20, 30].forEach((multiplierB, indexB) => {
+                            if (checkboxesB[indexB + 2].checked) {
+                                result += lvl * multiplierB * cluster * multiplier;
+                            }
+                        });
+                    }
+                });
+            }
+
+            const resultFormated = result.toLocaleString('ru-RU');
+
+            document.getElementById('result').textContent = `Итоговая цена в Элементе: ${resultFormated}`;
+
+            const resources = {
+                "Металл/Полимер": 8,
+                "Дерево/Камень": 24,
+                "Чёрный жемчуг": 1.6,
+                "Кристалл": 4,
+                "Кожа": 16,
+                "Цементная паста": 6,
+                "Жемчуг": 16,
+                "Мутагель": 0.08,
+                "Мутаген": 0.0006
+            };
+
+            const resourcesContainer = document.getElementById('resources');
+            resourcesContainer.innerHTML = "<h3>Итоговое значение в других ресурсах:</h3>";
+            Object.keys(resources).forEach(resource => {
+                const value = (cluster * resources[resource] * result).toFixed(1);
+                const formattedValue = parseFloat(value).toLocaleString('ru-RU');
+                const resourceElement = document.createElement('div');
+                resourceElement.classList.add('resource-item');
+                resourceElement.innerHTML = `<div class = 'el_other_material__name'>${resource}</div><div class = 'el_other_material__val'>${formattedValue}</div>`;
+                resourcesContainer.appendChild(resourceElement);
+            });
+        }
+
+        document.getElementById('lvl').addEventListener('input', calculate);
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', calculate);
+        });
+
+        calculate();
+    </script>
 </body>
 </html>
