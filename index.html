@@ -26,12 +26,12 @@
         }
 
         .bl_column__containder{
-        	display: flex;
+            display: flex;
         }
 
         .bl_column__item {
-			flex: 1;
-		}
+            flex: 1;
+        }
 
         h2 {
             text-align: center;
@@ -50,13 +50,14 @@
         }
 
         .input-group label.el__title{
-        	font-size: 16px;
-		    color: #2887e9;
-		    font-weight: bold;
+            font-size: 16px;
+            color: #2887e9;
+            font-weight: bold;
         }
 
-        .input-group input,
-        .input-group span {
+        /*.input-group input, .input-group span*/
+        .input-group input
+        {
             padding: 12px;
             font-size: 16px;
             background-color: #333333;
@@ -84,7 +85,8 @@
             font-size: 16px;
             display: flex;
             align-items: center;
-            color: #b0b0b0;
+            color: #d7d7d7;
+            cursor: pointer;
         }
 
         .checkbox-group input {
@@ -116,76 +118,218 @@
             color: #777777;
         }
         h3{
-        	color: #2887e9;
+            color: #2887e9;
         }
         .resource-item{
-        	display: flex;
+            display: flex;
         }
         .el_other_material__name, .el_other_material__val{
-        	width: 200px;
-        	color: #7c4dff;
-        	font-size: 18px;
+            width: 200px;
+            color: #7c4dff;
+            font-size: 18px;
         }
         .el_other_material__val{
-        	font-weight: bold
+            font-weight: bold
+        }
+
+        /*switch*/
+        .aiz-switch input:empty {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            position: absolute;
+            opacity: 0;
+        }
+        .aiz-switch input:empty ~ span {
+            display: inline-block;
+            position: relative;
+            text-indent: 0;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            line-height: 24px;
+            height: 21px;
+            width: 40px;
+            border-radius: 12px;
+            margin-right: 6px;
+        }
+        .aiz-switch input:empty ~ span:after,
+        .aiz-switch input:empty ~ span:before {
+            position: absolute;
+            display: block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            content: " ";
+            -webkit-transition: all 0.1s ease-in;
+            transition: all 0.1s ease-in;
+            width: 40px;
+            border-radius: 12px;
+        }
+        .aiz-switch input:empty ~ span:before {
+            background-color: #e8ebf1;
+        }
+        .aiz-switch input:empty ~ span:after {
+            height: 17px;
+            width: 17px;
+            line-height: 20px;
+            top: 2px;
+            bottom: 2px;
+            margin-left: 2px;
+            font-size: 0.8em;
+            text-align: center;
+            vertical-align: middle;
+            color: #f8f9fb;
+            background-color: #b105058a;
+        }
+        .aiz-switch input:checked ~ span:after {
+            background-color: #f77b0b;
+            margin-left: 20px;
+        }
+        .aiz-switch-secondary input:checked ~ span:after {
+            background-color: #8f97ab;
+        }
+        .aiz-switch-success input:checked ~ span:after {
+            background-color: #10970e;
+        }
+        .aiz-switch-info input:checked ~ span:after {
+            background-color: #25bcf1;
+        }
+        .aiz-switch-warning input:checked ~ span:after {
+            background-color: #ffc519;
+        }
+        .aiz-switch-danger input:checked ~ span:after {
+            background-color: #ef486a;
+        }
+        /*switch*/
+        .el__pointer{
+            color: #d7d7d7 !important;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            body{
+                height: auto;
+                padding: 10px;
+            }
+            .container{
+                width: 100%;
+                padding: 10px;
+            }
+            .bl_column__containder{
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Калькулятор</h2>
-
         <div class = "bl_column__containder">
-        	<div class = "bl_column__item">
-		        <div class="input-group">
-		            <label for="lvl" class = "el__title">Уровень динозавра/яйца:</label>
-		            <input type="number" id="lvl" value="0">
-		        </div>
+            <div class = "bl_column__item">
+                <div class="input-group">
+                    <label for="lvl" class = "el__title">Уровень динозавра/яйца:</label>
+                    <input type="number" id="lvl" value="0">
+                </div>
+            </div>
+            <div class = "bl_column__item">
+                <div class="input-group">
+                    <label for="cluster" class = "el__title">Множитель кластера:</label>
+                    <input type="number" id="cluster" value="5" disabled>
+                </div>
+            </div>
+        </div>
+        <div class = "bl_column__containder">
+            <div class = "bl_column__item">
+                <div class="input-group">
+                    <label class = "el__title">Характеристики динозавра:</label>
+                    <div class="checkbox-group">
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b4">
+                            <span class="slider round"></span>
+                            Имеющего диких предков
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b5">
+                            <span class="slider round"></span>
+                            Имеющего не дикую родословную
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b6">
+                            <span class="slider round"></span>
+                            Одна из хар-к 65 или выше
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b7">
+                            <span class="slider round"></span>
+                            Одна из хар-к 100 или выше
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b8">
+                            <span class="slider round"></span>
+                            Одна из хар-к 150 или выше
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b9">
+                            <span class="slider round"></span>
+                            Одна из хар-к 200 или выше
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "rb" type="radio" id="b10">
+                            <span class="slider round"></span>
+                            Одна из хар-к 250 или выше
+                        </label>
+                    </div>
+                </div>
+            </div>
 
-		        <div class="input-group">
-		            <label class = "el__title">Характеристики динозавра:</label>
-		            <div class="checkbox-group">
-		                <label><input type="checkbox" id="b4">Имеющего диких предков</label>
-		                <label><input type="checkbox" id="b5">Имеющего не дикую родословную</label>
-		                <label><input type="checkbox" id="b6">Одна из хар-к 65 или выше</label>
-		                <label><input type="checkbox" id="b7">Одна из хар-к 100 или выше</label>
-		                <label><input type="checkbox" id="b8">Одна из хар-к 150 или выше</label>
-		                <label><input type="checkbox" id="b9">Одна из хар-к 200 или выше</label>
-		                <label><input type="checkbox" id="b10">Одна из хар-к 250 или выше</label>
-		            </div>
-		        </div>
-		    </div>
-
-		    <div class = "bl_column__item">
-		        <div class="input-group">
-		            <label for="cluster" class = "el__title">Множитель кластера:</label>
-		            <input type="number" id="cluster" value="5" disabled>
-		        </div>
-
-		        <div class="input-group">
-		            <label class = "el__title">Колличество характеристик 65+</label>
-		            <div class="checkbox-group">
-		                <label><input type="checkbox" id="e4">2 характеристики +70% к цене</label>
-		                <label><input type="checkbox" id="e5">3 характеристики +80% к цене</label>
-		                <label><input type="checkbox" id="e6">4 характеристики +90% к цене</label>
-		                <label><input type="checkbox" id="e7">5 характеристики +95% к цене</label>
-		                <label><input type="checkbox" id="e8">6 характеристик и более +100% к цене</label>
-		            </div>
-		        </div>
-		        <div class="input-group">
-		            <label><input type="checkbox" id="e10">Гиганотозавр, Кархородонтозавр, Мек</label>
-		        </div>
-		    </div>
-	    </div>
+            <div class = "bl_column__item">
+                <div class="input-group">
+                    <label class = "el__title">Колличество характеристик 65+</label>
+                    <div class="checkbox-group">
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "re" type="radio" id="e4">
+                            <span class="slider round"></span>
+                            2 характеристики +70% к цене
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "re" type="radio" id="e5">
+                            <span class="slider round"></span>
+                            3 характеристики +80% к цене
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "re" type="radio" id="e6">
+                            <span class="slider round"></span>
+                            4 характеристики +90% к цене
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "re" type="radio" id="e7">
+                            <span class="slider round"></span>
+                            5 характеристики +95% к цене
+                        </label>
+                        <label class="aiz-switch aiz-switch-success mb-0">
+                            <input name = "re" type="radio" id="e8">
+                            <span class="slider round"></span>
+                            6 характеристик и более +100% к цене
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label class="aiz-switch aiz-switch-success mb-0 el__pointer">
+                        <input type="checkbox" id="e10">
+                        <span class="slider round"></span>
+                        Гиганотозавр, Кархородонтозавр, Мек
+                    </label>
+                </div>
+            </div>
+        </div>
 
         <div id="result">Итоговая цена в Элементе: 0</div>
         <div id="resources">
             <h3>Итоговое значение в других ресурсах:</h3>
         </div>
     </div>
-
-    <script>
-        function calculate(){var e=parseInt(document.getElementById("lvl").value);const t=parseInt(document.getElementById("cluster").value),c=[document.getElementById("b4"),document.getElementById("b5"),document.getElementById("b6"),document.getElementById("b7"),document.getElementById("b8"),document.getElementById("b9"),document.getElementById("b10")],n=[document.getElementById("e4"),document.getElementById("e5"),document.getElementById("e6"),document.getElementById("e7"),document.getElementById("e8")],d=document.getElementById("e10");console.log(e),(e<0||""==e||"e"==e||isNaN(e))&&(e=0,document.getElementById("lvl").value="");let l=0;[3,4,6,10,15,20,30].forEach(((n,d)=>{c[d].checked&&(l+=e*n*t)})),n.forEach(((n,d)=>{if(n.checked){const n=[.7,.8,.9,.95,1][d];[6,10,15,20,30].forEach(((d,o)=>{c[o+2].checked&&(l+=e*d*t*n)}))}})),d.checked&&([3,4,6,10,15,20,30].forEach(((n,d)=>{c[d].checked&&(l+=e*n*t)})),n.forEach(((n,d)=>{if(n.checked){const n=[.7,.8,.9,.95,1][d];[6,10,15,20,30].forEach(((d,o)=>{c[o+2].checked&&(l+=e*d*t*n)}))}})));const o=l.toLocaleString("ru-RU");document.getElementById("result").textContent=`Итоговая цена в Элементе: ${o}`;const m={"Металл/Полимер":8,"Дерево/Камень":24,"Чёрный жемчуг":1.6,"Кристалл":4,"Кожа":16,"Цементная паста":6,"Жемчуг":16,"Мутагель":.08,"Мутаген":6e-4},a=document.getElementById("resources");a.innerHTML="<h3>Итоговое значение в других ресурсах:</h3>",Object.keys(m).forEach((e=>{const c=(t*m[e]*l).toFixed(2),n=parseFloat(c).toLocaleString("ru-RU"),d=document.createElement("div");d.classList.add("resource-item"),d.innerHTML=`<div class = 'el_other_material__name'>${e}</div><div class = 'el_other_material__val'>${n}</div>`,a.appendChild(d)}))}document.getElementById("lvl").addEventListener("input",calculate),document.querySelectorAll('input[type="checkbox"]').forEach((e=>{e.addEventListener("change",calculate)})),calculate();
-    </script>
+    <script defer="" src="script.js"></script>
 </body>
 </html>
