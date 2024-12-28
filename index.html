@@ -222,7 +222,14 @@
                 flex-direction: column;
             }
         }
+        .el_reset__radio{
+            color: red;
+            font-size: 17px;
+            border-bottom: 1px dotted;
+            cursor: pointer;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -243,7 +250,7 @@
         <div class = "bl_column__containder">
             <div class = "bl_column__item">
                 <div class="input-group">
-                    <label class = "el__title">Характеристики динозавра:</label>
+                    <label class = "el__title">Характеристики динозавра <span class = "el_reset__radio" onclick="return resetRadio('rb');">✘</span></label>
                     <div class="checkbox-group">
                         <label class="aiz-switch aiz-switch-success mb-0">
                             <input name = "rb" type="radio" id="b4">
@@ -286,7 +293,7 @@
 
             <div class = "bl_column__item">
                 <div class="input-group">
-                    <label class = "el__title">Колличество характеристик 65+</label>
+                    <label class = "el__title">Колличество характеристик 65+ <span class = "el_reset__radio" onclick="return resetRadio('re');">✘</span></label>
                     <div class="checkbox-group">
                         <label class="aiz-switch aiz-switch-success mb-0">
                             <input name = "re" type="radio" id="e4">
